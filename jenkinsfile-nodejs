@@ -18,7 +18,7 @@ node
    stage('ExecuteSonarQubeReport') {
      nodejs(nodeJSInstallationName: 'nodejs17') {
         //sh 'npm run sonar'
-        sh "echo QA of nodeJS project" 
+        sh "echo QA of nodeJS project Begins" 
     }
       
         } 
