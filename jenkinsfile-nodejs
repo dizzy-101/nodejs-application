@@ -23,15 +23,23 @@ node
       
         } 
 		
-    stage('UploadintoNexus') {
+   stage('UploadingtoNexus') {
        nodejs(nodeJSInstallationName: 'nodejs17') {
           //sh 'npm publish'
           sh "echo backup of nodejs project" 
       }
       
           }	
+    stage('6.ManualApproval'){
+        steps{
+          sh "echo 'Please review the application performance.' "
+          timeout(time:600, unit:'MINUTES') {
+          input message: 'Application ready for deployment, Please review and approve'
+      }  
+        }
+      }
  
- stage('RunNodeJsApp') {
+   stage('RunNodeJsApp') {
  //sh "./scripts/run.sh"
  nodejs(nodeJSInstallationName: 'nodejs17') {
         //sh 'npm start &'
