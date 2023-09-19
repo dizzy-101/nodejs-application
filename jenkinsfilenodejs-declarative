@@ -9,7 +9,7 @@ pipeline{
     //triggers{}
     stages{
       
-      stage('1.CloneCode'){
+      stage('1.CLONE CODE '){
         steps{
             sh "echo 'cloning the latest application version.' "
             git "https://github.com/dizzy-101/nodejs-application.git"
@@ -23,7 +23,7 @@ pipeline{
         }
       }
 
-      stage('3.Build'){
+      stage('3.BUILD'){
         steps{
             sh "echo 'building akugbe'"
             akugbenodejs("Build")            
