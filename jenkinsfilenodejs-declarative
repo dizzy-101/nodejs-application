@@ -19,7 +19,7 @@ pipeline{
       stage('2.INTRO'){
         steps{
             akugbenodejs("Intro")
-            sh "echo 'Deploying akugbe'"
+            sh "echo 'Deploying akugbe NOW'"
         }
       }
 
@@ -29,27 +29,27 @@ pipeline{
             akugbenodejs("Build")            
         }
       }
-       stage('3.Execute SonarQube Report'){
+       stage('3.EXECUTE  SONARQUBE REPORT'){
         steps{
             akugbenodejs("SonarQube Report")
             sh "echo 'running QA on akugbe'"
         }
       }
-      stage('5.UploadArtifacts'){
+      stage('5.UPLOAD ARTIFACTS TO NEXUS'){
         steps{
             sh "echo 'backup on akugbe'"
             akugbenodejs("Upload Into Nexus")  
             
         }
       }
-      stage('5.Deploy2UAT'){
+      stage('5.DEPLOY TO UAT'){
         steps{
           sh "echo 'TESTING THE WEBHOOK without a running server, LOOKS GOOD' "
           sh "echo 'testing the deploying to UAT stage without a running server' "
             //deploy adapters: [tomcat9(credentialsId: 'kevtom', path: '', url: 'http://54.197.6.138:8080/')], contextPath: null, war: 'target/*.war'
         }
       }
-      stage('6.ManualApproval'){
+      stage('6.MANUAL APPROVAL'){
         steps{
           sh "echo 'Please review the application performance.' "
           timeout(time:600, unit:'MINUTES') {
@@ -57,7 +57,7 @@ pipeline{
       }  
         }
       }
-      stage('7.Deploy2Prod'){
+      stage('7.DEPLOY TO PROD'){
         steps{
           sh "echo 'testing the deploying to Prod stage without a running server' "
             //deploy adapters: [tomcat9(credentialsId: 'kevtom', path: '', url: 'http://54.197.6.138:8080/')], contextPath: null, war: 'target/*.war'
