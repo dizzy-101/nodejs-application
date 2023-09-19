@@ -33,7 +33,7 @@ node
  
  stage('RunNodeJsApp') {
  //sh "./scripts/run.sh"
- nodejs(nodeJSInstallationName: 'nodejs17) {
+ nodejs(nodeJSInstallationName: 'nodejs17') {
         //sh 'npm start &'
         sh "echo START nodeJS project" 
     }
