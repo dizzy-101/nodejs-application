@@ -1,0 +1,101 @@
+//@Library('akugbe-ss') _
+pipeline{
+    agent any 
+   tools {
+  nodejs 'nodejs17'
+}
+
+    //options{}
+    //triggers{}
+    stages{
+      
+      stage('1.CloneCode'){
+        steps{
+            sh "echo 'cloning the latest application version.' "
+            git "https://github.com/dizzy-101/nodejs-application.git"
+        }
+      }
+
+      stage('2.INTRO'){
+        steps{
+            akugbe("Intro")
+            sh "echo 'Deploying akugbe'"
+        }
+      }
+
+      stage('3.Build'){
+        steps{
+            sh "echo 'building akugbe'"
+            akugbenodejs("Build")            
+        }
+      }
+       stage('3.Execute SonarQube Report'){
+        steps{
+            akugbenodejs("SonarQube Report")
+            sh "echo 'running QA on akugbe'"
+        }
+      }
+      stage('5.UploadArtifacts'){
+        steps{
+            sh "echo 'backup on akugbe'"
+            akugbenodejs("Upload Into Nexus")  
+            
+        }
+      }
+      stage('5.Deploy2UAT'){
+        steps{
+          sh "echo 'TESTING THE WEBHOOK without a running server, LOOKS GOOD' "
+          sh "echo 'testing the deploying to UAT stage without a running server' "
+            //deploy adapters: [tomcat9(credentialsId: 'kevtom', path: '', url: 'http://54.197.6.138:8080/')], contextPath: null, war: 'target/*.war'
+        }
+      }
+      stage('6.ManualApproval'){
+        steps{
+          sh "echo 'Please review the application performance.' "
+          timeout(time:600, unit:'MINUTES') {
+          input message: 'Application ready for deployment, Please review and approve'
+      }  
+        }
+      }
+      stage('7.Deploy2Prod'){
+        steps{
+          sh "echo 'testing the deploying to Prod stage without a running server' "
+            //deploy adapters: [tomcat9(credentialsId: 'kevtom', path: '', url: 'http://54.197.6.138:8080/')], contextPath: null, war: 'target/*.war'
+        }
+      }
+      
+      stage('8.APM'){
+        steps{   
+          sh "echo 'monitoring and observation and alerting' "
+          sh "echo 'application performance Monitoring in progress' "
+      }
+      
+     }
+    }
+    
+    post{
+        always{
+ emailext attachLog: true, body: '''hello Team,
+The build and deployment status is a success. kudos to you all and i appreciate all the efforts
+
+BRGDS,
+KLIK ENGINEERING. ''', compressLog: true, recipientProviders: [buildUser(), contributor(), developers(), requestor()], replyTo: 'klikengineering@yahoo.com', subject: 'Build and Deployment Status', to: 'kevoghene@yahoo.com, klikengineering@gmail.com, flowwith2ok@gmail.com'
+
+        }
+        success{
+ emailext attachLog: true, body: '''hello Team,
+The build and deployment status is a success. kudos to you all and i appreciate all the efforts
+
+BRGDS,
+KLIK ENGINEERING. ''', compressLog: true, recipientProviders: [buildUser(), contributor(), developers(), requestor()], replyTo: 'klikengineering@yahoo.com', subject: 'Build and Deployment Status', to: 'kevoghene@yahoo.com, klikengineering@gmail.com, flowwith2ok@gmail.com'
+        }
+        failure{
+ emailext attachLog: true, body: '''hello Team,
+The build and deployment status failed. kudos to you all and i appreciate all the efforts, lets find out the issues and fix them.
+
+BRGDS,
+KLIK ENGINEERING. ''', compressLog: true, recipientProviders: [buildUser(), contributor(), developers(), requestor()], replyTo: 'klikengineering@yahoo.com', subject: 'Build and Deployment Status', to: 'kevoghene@yahoo.com, klikengineering@gmail.com, flowwith2ok@gmail.com'
+
+        }
+    }
+}
