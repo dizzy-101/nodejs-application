@@ -1,4 +1,4 @@
-//@Library('akugbe-ss') _
+@Library('akugbenodejs-ss') _
 pipeline{
     agent any 
    tools {
@@ -18,7 +18,7 @@ pipeline{
 
       stage('2.INTRO'){
         steps{
-            akugbe("Intro")
+            akugbenodejs("Intro")
             sh "echo 'Deploying akugbe'"
         }
       }
