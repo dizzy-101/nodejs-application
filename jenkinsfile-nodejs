@@ -1,0 +1,42 @@
+node
+{
+ 
+  stage("CheckOutCodeGit")
+  {
+   sh "echo running ebay nodeJS project" 
+   git "https://github.com/dizzy-101/nodejs-application"
+ }
+ 
+ stage("Build"){
+   nodejs(nodeJSInstallationName: 'nodejs17') {
+        sh 'npm install'
+        }
+      
+    }
+ 
+ 
+   stage('ExecuteSonarQubeReport') {
+     nodejs(nodeJSInstallationName: 'nodejs17') {
+        //sh 'npm run sonar'
+        sh "echo QA of nodeJS project" 
+    }
+      
+        } 
+		
+    stage('UploadintoNexus') {
+       nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
+          //sh 'npm publish'
+          sh "echo backup of nodejs project" 
+      }
+      
+          }	
+ 
+ stage('RunNodeJsApp')
+ {
+ //sh "./scripts/run.sh"
+ //nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
+        //sh 'npm start &'
+        sh "echo START nodeJS project" 
+    }
+}   
+}
