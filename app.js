@@ -33,21 +33,21 @@ app.get('/landmarktechnologies', function(request, response) {
 app.get("/html", function(req,res){
     res.set("Content-Type","text/html");
     //res.contentType("html") ; 
-    res.write("<h2>Welcome</h2>");
-    res.write("<h2>/html call</h2>");
+    res.write("<h2>Welcome to klik engineering</h2>");
+    res.write("<h2>/we are building Akugbe</h2>");
     //must end 
     res.end();
     
     });
-    app.get("/jsonData", function(req,res){
+    app.get("/info", function(req,res){
         res.type('json');
         //res.type('application/json');
         //res.json({'name': 'S. Legah'});
         res.send({
-		'name': 'Landmark Technologies',
+		'name': 'KLIK ENGINEERING',
 		'technology': 'DevOps',
-		'contact' : '+14372152483',
-		'email': 'info@mylandmarktech.com'
+		'contact' : '+2348037176206',
+		'email': 'klikengineering@yahoo.com'
 	            });
         
         });
@@ -70,7 +70,7 @@ app.get("/status-code-500", function(req, res) {
 
 app.get('/redirect', function(req, res) {
     //Send status 300
-        res.redirect('http://mylandmarktech.com');
+        res.redirect('http://instagram.com/kev_dizzy');
     });
     
  
