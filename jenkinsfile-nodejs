@@ -25,7 +25,7 @@ node
 		
    stage('UploadingtoNexus') {
        nodejs(nodeJSInstallationName: 'nodejs17') {
-          sh 'npm publish'
+          //sh 'npm publish'
           sh "echo backup of nodejs project" 
       }
       
@@ -42,7 +42,7 @@ node
    stage('RunNodeJsApp') {
  //sh "./scripts/run.sh"
  nodejs(nodeJSInstallationName: 'nodejs17') {
-        //sh 'npm start &'
+        sh 'npm start'
         sh "echo START nodeJS project" 
     }
 }   
