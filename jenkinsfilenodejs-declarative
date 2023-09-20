@@ -38,7 +38,12 @@ pipeline{
       stage('5.UPLOAD ARTIFACTS TO NEXUS'){
         steps{
             sh "echo 'backup on akugbe'"
-            akugbenodejs("Upload Into Nexus")  
+            //akugbenodejs("Upload Into Nexus")  
+            //email=kevoghene@yahoo.com
+           // always-auth=true
+           //_auth=YWRtaW46anVtcGVk
+           //## use this for authn = echo -n 'username:password' | openssl base64
+           //allowRepublish=true
             
         }
       }
@@ -47,6 +52,7 @@ pipeline{
           sh "echo 'TESTING THE WEBHOOK without a running server, LOOKS GOOD' "
           sh "echo 'testing the deploying to UAT stage without a running server' "
             //deploy adapters: [tomcat9(credentialsId: 'kevtom', path: '', url: 'http://54.197.6.138:8080/')], contextPath: null, war: 'target/*.war'
+          sh " npm start"
         }
       }
       stage('6.MANUAL APPROVAL'){
@@ -61,6 +67,7 @@ pipeline{
         steps{
           sh "echo 'testing the deploying to Prod stage without a running server' "
             //deploy adapters: [tomcat9(credentialsId: 'kevtom', path: '', url: 'http://54.197.6.138:8080/')], contextPath: null, war: 'target/*.war'
+          sh " npm start"
         }
       }
       
