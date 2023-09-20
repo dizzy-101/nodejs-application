@@ -17,7 +17,7 @@ node
  
    stage('ExecuteSonarQubeReport') {
      nodejs(nodeJSInstallationName: 'nodejs17') {
-        //sh 'npm run sonar'
+        sh 'npm run sonar'
         sh "echo QA of nodeJS project Begins" 
     }
       
@@ -25,7 +25,7 @@ node
 		
    stage('UploadingtoNexus') {
        nodejs(nodeJSInstallationName: 'nodejs17') {
-          //sh 'npm publish'
+          sh 'npm publish'
           sh "echo backup of nodejs project" 
       }
       
