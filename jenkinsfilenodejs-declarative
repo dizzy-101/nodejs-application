@@ -44,6 +44,9 @@ pipeline{
            //_auth=YWRtaW46anVtcGVk
            //## use this for authn = echo -n 'username:password' | openssl base64
            //allowRepublish=true
+           //sh 'chmod u+x ./scripts/nexus.sh'
+          //sh './scripts/nexus.sh'
+          sh 'npm publish'
             
         }
       }
