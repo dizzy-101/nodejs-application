@@ -45,15 +45,15 @@ pipeline{
       stage('5.UPLOAD ARTIFACTS TO NEXUS'){
         steps{
             sh "echo 'backup on akugbe'"
-            //akugbenodejs("Upload Into Nexus")  
+            akugbenodejs("Upload Into Nexus")  
             //email=kevoghene@yahoo.com
            // always-auth=true
            //_auth=YWRtaW46anVtcGVk
            //## use this for authn = echo -n 'username:password' | openssl base64
            //allowRepublish=true
-           sh 'chmod u+x ./scripts/nexus.sh'
-           sh './scripts/nexus.sh'
-           sh 'npm publish'
+           //sh 'chmod u+x ./scripts/nexus.sh'
+           //sh './scripts/nexus.sh'
+           //sh 'npm publish'
             
         }
       }
