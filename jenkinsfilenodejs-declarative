@@ -1,6 +1,13 @@
 @Library('akugbenodejs-ss') _
 pipeline{
-    agent any 
+    agent {
+  label {
+    label 'sonar'
+    retries 2
+  }
+ 
+} 
+    //agent any 
    tools {
   nodejs 'nodejs17'
 }
