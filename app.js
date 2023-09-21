@@ -19,7 +19,7 @@ res.send("<h2>Welcome to Node JS express app</h2>"+appEnv.url+appEnv.port+port+p
 }).listen(9009);
 console.log(__dirname+"/images/mylandmarklogo.png");
 */
-app.get('/landmarktechnologies', function(request, response) {
+app.get('/klik', function(request, response) {
     //response.send("<h2><center>Welcome to Node JS app develpoed by MyLandmarkTech</h2>");
     response.write("<h2><center><u>Node JS  Application </u></center></h2>");
 	
@@ -30,7 +30,7 @@ app.get('/landmarktechnologies', function(request, response) {
  
 
 //app.get("/html", function(req,res){
-app.get("/html", function(req,res){
+app.get("/akugbe", function(req,res){
     res.set("Content-Type","text/html");
     //res.contentType("html") ; 
     res.write("<h2>Welcome to klik engineering</h2>");
