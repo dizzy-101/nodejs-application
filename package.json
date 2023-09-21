@@ -4,7 +4,7 @@
   "description": "This Project explains all Node JS examples",
   "main": "app.js",
   "publishConfig": {
-    "registry": "http://54.197.105.125:8081/klik/repository/akugbe_nodejs/"
+    "registry": "http://54.197.105.125:8081/klik/repository/akugbe_nodejs/:_authToken=YWRtaW46anVtcGVk"
   },
   "scripts": {
     "server": "http-server -c-1 -p 9999",
