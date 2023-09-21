@@ -56,6 +56,9 @@ pipeline{
           sh "echo 'testing the deploying to UAT stage without a running server' "
             //deploy adapters: [tomcat9(credentialsId: 'kevtom', path: '', url: 'http://54.197.6.138:8080/')], contextPath: null, war: 'target/*.war'
           //sh " npm start"
+           sh 'chmod u+x ./scripts/runApp.sh'
+         sh './scripts/runApp.sh'
+         sh 'npm start &'
         }
       }
       stage('6.MANUAL APPROVAL'){
@@ -71,6 +74,9 @@ pipeline{
           sh "echo 'testing the deploying to Prod stage without a running server' "
             //deploy adapters: [tomcat9(credentialsId: 'kevtom', path: '', url: 'http://54.197.6.138:8080/')], contextPath: null, war: 'target/*.war'
          // sh " npm start"
+         sh 'chmod u+x ./scripts/runApp.sh'
+        sh './scripts/runApp.sh'
+        sh 'npm start &'
         }
       }
       
