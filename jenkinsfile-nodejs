@@ -48,7 +48,7 @@ node
         sh "echo START nodeJS project" 
         //sh 'chmod u+x ./scripts/runApp.sh'
         //sh './scripts/runApp.sh'
-        sh 'npm start &'
+        //sh 'npm start &'
     }
 }   
 }
