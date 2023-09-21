@@ -26,8 +26,10 @@ node
    stage('UploadingtoNexus') {
        nodejs(nodeJSInstallationName: 'nodejs17') {
            //nexusArtifactUploader credentialsId: 'nexus id', groupId: '1', nexusUrl: '54.209.219.41:8081/klik', nexusVersion: 'nexus3', protocol: 'http', repository: 'http://54.209.219.41:8081/klik/repository/akugbe_nodejs/', version: '3.59.0-01'
-          sh 'npm publish'
           sh "echo backup of nodejs project" 
+          sh 'chmod u+x ./scripts/nexus.sh'
+          sh './scripts/nexus.sh'
+          sh 'npm publish'
       }
       
           }	
