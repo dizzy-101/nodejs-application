@@ -5,7 +5,7 @@
 #set password "jumped"
 
 # Run the npm login command with expect
-#spawn npm login --registry=http://54.197.105.125:8081/klik/repository/akugbe_nodejs/
+#spawn npm login --registry=http://172.31.55.126:8081/klik/repository/akugbe_nodejs/
 
 # Expect the username prompt and provide the username
 #expect "Username:"
