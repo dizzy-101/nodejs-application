@@ -1,5 +1,5 @@
 npm config list
-npm config set registry http://54.197.105.125:8081/klik/repository/akugbe_nodejs/
+npm config set registry http://172.31.55.126:8081/klik/repository/akugbe_nodejs/
 
  Provide your Nexus registry username and password
 username=kelvin
